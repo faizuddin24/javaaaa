@@ -1,0 +1,31 @@
+class InvalidAgeException extends Exception {
+    public InvalidAgeException(String message) {
+        super(message);
+    }
+}
+
+
+public class CustomExceptionExample {
+
+   
+    public static void checkAge(int age) throws InvalidAgeException {
+        if (age < 18) {
+            throw new InvalidAgeException("Invalid age: " + age + ". You must be 18 or older.");
+        } else {
+            System.out.println("Age is valid.");
+        }
+    }
+
+    
+    public static void main(String[] args) {
+        try {
+            
+            checkAge(20);
+
+            // Test with an invalid age
+            checkAge(15); 
+        } catch (InvalidAgeException e) {
+            System.out.println("Caught an exception: " + e.getMessage());
+        }
+    }
+}
